@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import './question.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -17,8 +19,8 @@ class _MyAppState extends State {
   void _questionAnswered() {
     setState(() {
       _questionIndex = _questionIndex + 1;
-      print(_questionIndex);
     });
+    print(_questionIndex);
   }
 
   @override
@@ -34,24 +36,22 @@ class _MyAppState extends State {
           title: Text('My title'),
         ),
         backgroundColor: Colors.grey,
-        body: Center(
-          child: Column(
-            children: [
-              Text(questions[_questionIndex % questions.length]),
-              RaisedButton(
-                child: Text('Answer1'),
-                onPressed: _questionAnswered,
-              ),
-              RaisedButton(
-                child: Text('Answer2'),
-                onPressed: _questionAnswered,
-              ),
-              RaisedButton(
-                child: Text('Answer3'),
-                onPressed: _questionAnswered,
-              ),
-            ],
-          ),
+        body: Column(
+          children: [
+            Question(questions[_questionIndex % questions.length]),
+            RaisedButton(
+              child: Text('Answer1'),
+              onPressed: _questionAnswered,
+            ),
+            RaisedButton(
+              child: Text('Answer2'),
+              onPressed: _questionAnswered,
+            ),
+            RaisedButton(
+              child: Text('Answer3'),
+              onPressed: _questionAnswered,
+            ),
+          ],
         ),
       ),
     );
